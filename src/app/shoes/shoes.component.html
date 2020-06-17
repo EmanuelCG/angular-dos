@@ -1,0 +1,45 @@
+<h1>{{title}}</h1>
+<h2>Shoes mejores marcas</h2>
+<h4 *ngIf = "nombre">Bienvenido {{nombre}}</h4>
+<button (click) ="redirigir()">Llevam a Games</button>
+<ul>
+    <li *ngFor = "let marca of marcas; let indice = index">{{indice + ': ' + marca}}
+        <button (click) = "dropMarca(indice)">Borrar</button>
+    </li>
+</ul>
+<h2>Añadir marcas</h2>
+<input type="text" [(ngModel)]="miMarca">
+<p>{{miMarca}}</p>
+<button (click) ="getMarca()">Mostrar marca</button>
+<button (click)="addMarca()">Añadir marca</button>
+<hr>
+
+<ul>
+            <!-- Directiva *ngFor
+                        Sirve pare recorrer nuestro objeto en una etiqueta
+                    -->
+    <li *ngFor="let show of shoes">
+        <span [ngStyle] = "{
+            'text-decoration' : !show.stock ? 'line-through': 'none'
+        }">{{show.nombre}} - <strong [class.precioAlto] = "show.precio >= 50">
+            ${{show.precio}}
+        </strong>
+        <!-- Directivas -->
+        <!-- Directiva *ngIf
+            Sirve para generar condicionales en la etiqueta
+        -->
+        <span *ngIf="show.precio < 80" 
+        [style.background] ="show.precio < 80 ? 'aqua' : 'transparent'"
+        [style.color] = "show.precio < 80 ? 'red': 'black'"
+        >¡Oferta!</span></span>
+    </li>
+</ul>
+<h2>Colores disponibles</h2>
+<p>Input de Switch</p>
+<input type="text" [(ngModel)] = "color">
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase = "'yellow'">El color predominante es <span [ngStyle] = "{'background': color}">amarillo.</span></li>
+    <li *ngSwitchCase="'aqua'">El color predominante es <span [ngStyle] = "{'background': color}">aqua.</span></li>
+    <li *ngSwitchCase="'red'">El color predominante es <span [ngStyle] = "{'background': color}">rojo.</span></li>
+</ul>
+

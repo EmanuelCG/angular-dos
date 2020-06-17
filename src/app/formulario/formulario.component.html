@@ -1,0 +1,26 @@
+<h2>Sección formulario</h2>
+<form #formContacto = "ngForm" (ngSubmit) = "onSubmit(formContacto)">
+    <!-- Convirtiendo formulando Angular 
+        Usar la almuadilla seguido del nombre: #Formulario
+        Indicar que tu formulario es ngForm utiliando el nombre que asignaste: #Formulario = "ngForm"
+        Utilizanms el evento ngSubmit para capturar el submit del formulario y ejecutar el método que hemos creado para el formulario: (ngSubmit) = "NombreDelMetodo()"
+    -->
+    <label for="nombre">Nombre: </label>
+    <input type="text" name="nombre" #nombre = "ngModel" [(ngModel)] = "usuario.name" required pattern="[a-zA-Z]+">
+    <!-- Debemos colocar nombre a nuestros inputs con # e indicar la directiva ngModel.
+         Debemos asignar el atributo ngModel: [(ngModel)].
+         ngModel permite modificar una propiedad de nuestra Clase de forma instantanea y reactiva tanto en el Backend como en el Frontend.
+         Asignamos la propiedad al ngModel: [(ngModel)] = "propiedad"
+         IMPORTANTE: No olvides importar el module { FormsModule} from '@angular/Forms' en app.module.ts
+    -->
+    <span *ngIf = "nombre.touched && !nombre.valid"> Nombre es Obligatorio</span><br>
+    <label for="email">Email: </label>
+    <input type="email" name="email" #email = "ngModel" [(ngModel)] = "usuario.email" required>
+    <span *ngIf="email.touched && !email.valid"> Campo Obligatorio</span><br>
+    <label for="mesage">Mensaje: </label>
+    <input type="textarea" name="message" #message = "ngModel" [(ngModel)] = "usuario.message" required pattern="[a-zA-Z]+">
+    <span *ngIf="message.touched && !message.valid"> Campo Obligatorio</span><br>
+    <input type="submit" value="enviar" [disabled] ="!formContacto.form.valid">
+    
+    
+</form>

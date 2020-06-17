@@ -1,0 +1,10 @@
+.precioAlto{
+    color: red !important;
+}
+
+.active{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}

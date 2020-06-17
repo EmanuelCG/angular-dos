@@ -1,0 +1,30 @@
+<h3>Externo works!</h3>
+<input type="text" [(ngModel)]="userId" (keyup.enter)="cargaUsuario()">
+<div *ngIf="!user">
+    <p>Cargando...</p>
+</div>
+
+<div *ngIf = "user">
+    <p><b>Nombres:</b> {{user.first_name + user.last_name}}</p>
+    <p><b>Correo:</b> {{user.email}}</p>
+    <p>{{fecha | date: 'dd/MM/yy'}}</p> <!-- Aqui utilzamos una pipe fecha !  -->
+    <p>{{'UTILIZANDO MINUCULAS CON PIPE' | lowercase}}</p> <!-- Aqui utilzamos una pipe de texto !  -->
+    <p>{{ 10 | calculadora: 5}}</p><!-- valor 1 | nombre del pipe: valor 2-->
+</div>
+<hr>
+<h3>Crear usuario</h3>
+<form #createForm="ngForm" (ngSubmit) = "onSubmit(createForm)">
+    <!-- <form #formContacto="ngForm" (ngSubmit)="onSubmit(formContacto)"> -->
+    <label for="nombre">Nombre: </label>
+    <input type="text" name="name" #name="ngModel" [(ngModel)] = "newUser.name" required pattern="[a-zA-Z]+">
+    <span *ngIf = "name.touched && !name.valid">Campo requerido</span>
+    <br>
+    <label for="profesion">Profesion: </label>
+    <input type="text" name="job" #job="ngModel" [(ngModel)] = "newUser.job" required>
+    <span *ngIf="job.touched && !job.valid">Campo requerido</span>
+    <input type="submit"  value= "Guardar usuario" [disabled] = "!createForm.form.valid">
+    <div *ngIf ="saveUser">
+        <h4>Datos del form</h4>
+        <p><b>{{saveUser.name}}</b>/{{saveUser.job}}</p>
+    </div>
+</form>

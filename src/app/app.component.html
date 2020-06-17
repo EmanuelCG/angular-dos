@@ -1,0 +1,21 @@
+<div [ngStyle] = "{
+  'background': config.fondo,
+  'padding' : '5px',
+  'border' : '5px solid black'
+}">
+  <h2>Bienvenido {{title}}</h2>
+ <p>{{detalle}}</p>
+  <!-- <button (click)="ocultarGames()">Ocultar Games</button> -->
+  <!-- <app-videojuego *ngIf="mostrarGames"></app-videojuego> -->
+  <!-- <app-shoes></app-shoes> -->
+  <nav>
+    <a [routerLink] = "['/Home']" [routerLinkActive] = "['active']">Home</a><span> | </span>
+    <a [routerLink] = "['/Shoes']" [routerLinkActive] = "['active']">Shoes</a><span> | </span>
+    <a [routerLink] = "['/Games']" [routerLinkActive] = "['active']">Games</a><span> | </span>
+    <a [routerLink] = "['/Cursos']" [routerLinkActive] = "['active']">Cursos</a><span> | </span>
+    <a [routerLink] = "['/Externo']" [routerLinkActive] = "['active']"> Externo</a><span> | </span>
+    <a [routerLink] = "['/Formulario']" [routerLinkActive] = "['active']">Formulario</a>
+  </nav>
+<router-outlet></router-outlet>
+
+</div>
